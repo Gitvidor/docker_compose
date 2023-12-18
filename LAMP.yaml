@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  web:
+    image: php:apache
+    ports:
+      - "80:80"
+    volumes:
+      - /var/www/html:/var/www/html
+      - /etc/apache2/apache2.conf:/etc/apache2/apache2.conf
+    links:
+      - db
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: ogD5bpKNZcqCyVaJVWtU
+      MYSQL_DATABASE: mydb
+    ports:
+      - "3306:3306"
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
